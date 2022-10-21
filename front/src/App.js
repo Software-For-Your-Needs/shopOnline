@@ -5,6 +5,8 @@ import { Footer } from './components/layout/Footer';
 import Home from './components/Home';
 //Router traido desde react-router-dom (no confundir con el de express)
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Agregarproducto from './components/Agregarproducto';
+import { Carrito } from './components/Carrito';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/Home" element={<Home />}/>
+            <Route path="/Agregarproducto" element={<Agregarproducto />}/>
+            <Route path="/Carrito" element={<Carrito />}/>
           </Routes>
         </div>
         <Footer />
