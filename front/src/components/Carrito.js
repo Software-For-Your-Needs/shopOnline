@@ -9,7 +9,7 @@ export const Carrito = () => {
                     <div className="col-md-8">
                         <div className="card mb-4">
                             <div className="card-header py-3">
-                                <h5 className="mb-0">Carrito</h5>
+                                <h5 className="mb-0">Carrito de compras</h5>
                             </div>
                             <div className="card-body">
                                 <div className="row">                                    
@@ -27,8 +27,9 @@ export const Carrito = () => {
 
                                     <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                         <p><strong>Caneca</strong></p>
-                                        <p>Color: blue</p>
-                                        <p>Size: M</p>
+                                        <p>Material: Polietileno</p>
+                                        <p>Capacidad: 20 L</p>
+                                        <p>Capacidad: r = 20, l = 60</p>
                                         <button type="button" className="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Remover producto">
                                         <i className="fa fa-trash"></i>
                                         </button>
@@ -56,7 +57,7 @@ export const Carrito = () => {
                                             </button>
                                         </div>
                                         <p className="text-start text-md-center">
-                                        <strong>$17.99</strong>
+                                        <strong>$39.500</strong>
                                         </p>
                                     </div>  
 
@@ -110,7 +111,7 @@ export const Carrito = () => {
                                             </button>
                                         </div>
                                         <p class="text-start text-md-center">
-                                        <strong>$17.99</strong>
+                                        <strong>$140.000</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -123,34 +124,34 @@ export const Carrito = () => {
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-header py-3">
-                                <h5 class="mb-0">Summary</h5>
+                                <h5 class="mb-0">Resumen de compra</h5>
                             </div>
                             <div class="card-body px-4">
                                 <ul class="list-group list-group-flush">
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                        Products
-                                        <span>$53.98</span>
+                                        Productos
+                                        <span>$179.500</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        Shipping
+                                        Envío
                                         <span>Gratis</span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                         <div>
-                                        <strong>Total amount</strong>
+                                        <strong>Total cuenta</strong>
                                         <strong>
-                                            <p class="mb-0">(including VAT)</p>
+                                            <p class="mb-0">(incluye IVA)</p>
                                         </strong>
                                         </div>
-                                        <span><strong>$53.98</strong></span>
+                                        <span><strong>$179.500</strong></span>
                                     </li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary btn-lg btn-block">
-                                Go to checkout
-                                </button>
+                                <a  href="http://localhost:3000" type="button" class="btn btn-primary btn-lg btn-block">
+                                Continuar
+                                </a>
                             </div>
                         </div>
                     </div>
