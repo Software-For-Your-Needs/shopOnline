@@ -13,7 +13,7 @@ export const Ventas = () => {
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a class="navbar-brand" href="http://localhost:3000/Carrito">Modificar Productos</a>
+  <a class="navbar-brand" href="http://localhost:3000/Agregarproducto">Agregar Productos</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
