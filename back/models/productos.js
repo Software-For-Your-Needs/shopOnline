@@ -38,11 +38,8 @@ const productosSchema=mongoose.Schema({
         required:[true,"Por favor seleccione la categoria del producto."],
         enum:{
             values:[
-                "Galón",
-                "Garrafa",
-                "Cuñete",
-                "Tambor",
-                "Contenedor"
+                "Reciclado",
+                "Puro"
             ]
         }
     },
