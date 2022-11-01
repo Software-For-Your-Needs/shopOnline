@@ -9,6 +9,8 @@ import Agregarproducto from './components/Agregarproducto';
 import { Carrito } from './components/Carrito';
 import Ventas from './components/Ventas';
 import { ProductDetails } from './components/products/ProductDetails';
+import { Dashboard } from './components/admin/Dashboard';
+import { ProductsList } from './components/admin/ProductsList';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/Carrito" element={<Carrito />}/>
             <Route path="/Ventas" element={<Ventas />}/>
             <Route path="/producto/:id" element={<ProductDetails />}/>
+            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/listaProductos" element={<ProductsList />}/>
           </Routes>
         </div>
         <Footer />
