@@ -7,7 +7,7 @@ export const Sidebar = () => {
         <nav id="sidebar">
             <ul className='list-unstyled components'>
                 <li>
-                    <Link to="dashboard"><i className='fa fa-tachometer'> Administración</i></Link>
+                    <Link to="/dashboard"><i className='fa fa-tachometer'> Administración</i></Link>
                 </li>
                 {/*Botones de productos*/}
                 <li>
