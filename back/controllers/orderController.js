@@ -55,3 +55,38 @@ exports.myOrders=catchAsyncErrors(async(req, res, next)=>{
         orders
     })
 })
+// Admin
+// Ver todas las ordenes
+exports.allOrders = catchAsyncErrors(async(req, res, next)=>{
+    const orders = await Order.find();
+
+    let cantidadTotal = 0;
+    orders.forEach(order=>{
+        cantidadTotal += order.precioTotal
+    })
+    res.status(200).json({
+        success:true,
+        cantidadTotal,
+        orders
+    })
+})
+// Editar una orden
+
+exports.updateOrder=catchAsyncErrors(async(req, res, next)=>{
+    const order= await Order.findById(req.params.id)
+
+    if (!order){
+        return next(new ErrorHandler("Orden no encontrada", 404))
+    }
+    if (order.estado === "Enviado"){
+        return next(new ErrorHandler("Esta orden ya fue enviada", 400))
+    }
+    order.estado = req.body.estado;
+    order.fechaEnvio = Date.now();
+
+    await order.save()
+
+    res.status(200).json({
+        success: true,        
+    })
+})
