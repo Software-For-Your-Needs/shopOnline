@@ -5,9 +5,9 @@ const catchAsyncErrors=require("../middleware/catchAsyncErrors")
 // Crear una orden
 exports.newOrder= catchAsyncErrors(async(req, res, next)=>{
     const {
-        Items,
+        items,
         envioInfo,
-        PrecioItems,
+        precioItems,
         precioImpuesto,
         precioEnvio,
         precioTotal,
@@ -15,9 +15,9 @@ exports.newOrder= catchAsyncErrors(async(req, res, next)=>{
     } = req.body;
 
     const order=await Order.create({
-        Items,
+        items,
         envioInfo,
-        PrecioItems,
+        precioItems,
         precioImpuesto,
         precioEnvio,
         precioTotal,
