@@ -121,3 +121,12 @@ exports.resetPassword = catchAsyncErrors(async(req, res, next)=>{
     await user.save();
     tokenEnviado(user, 200, res)
 })
+// Ver perfil de usuario (Usuario logueado)
+exports.getUserProfile=catchAsyncErrors(async(req, res, next)=>{
+    const user=await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user
+    })
+})
