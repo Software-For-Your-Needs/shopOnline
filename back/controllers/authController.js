@@ -130,3 +130,19 @@ exports.getUserProfile=catchAsyncErrors(async(req, res, next)=>{
         user
     })
 })
+//Update contraseña usuario logueado
+exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
+    const user= await User.findById(req.user.id).select("+password");
+
+    //Revisamos si la contraseña vieja es igual a la nueva
+    const sonIguales = await user.compararPass(req.body.oldPassword)
+
+    if (!sonIguales){
+        return next (new ErrorHandler("La contraseña actual no es correcta", 401))
+    }
+
+    user.password= req.body.newPassword;
+    await user.save();
+
+    tokenEnviado(user, 200, res)
+})
