@@ -1,10 +1,32 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const producto=require("../models/productos");
+const APIFeatures = require("../utils/apiFeatures");
 const ErrorHandler = require("../utils/errorHandler");
 const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //Usurpación del require
 
 //Ver la lista de productos
 exports.getProducts=catchAsyncErrors( async (req,res,next) =>{
+    
+    const resPerPage = 3;
+    const productCount = await producto.countDocuments();
+
+    const apiFeatures = new APIFeatures(producto.find(), req.query)
+        .search()
+        .filter();
+
+    let products = await apiFeatures.query;
+    let filteredProductsCount= products.length;
+    apiFeatures.pagination(resPerPage);
+    products = await apiFeatures.query.clone();
+
+    res.status(200).json({
+        success:true,
+        productCount,
+        resPerPage,
+        filteredProductsCount,
+        products
+    })
+
     const productos= await producto.find();
 
     if (!productos){
