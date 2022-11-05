@@ -146,3 +146,21 @@ exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
 
     tokenEnviado(user, 200, res)
 })
+
+//Update perfil del usuario logueado
+exports.updateProfile=catchAsyncErrors(async(req, res, next)=>{
+    const nuevaData = {
+        nombre: req.body.nombre,
+        email: req.body.email
+    }
+    //update Avatar: pendiente
+    const user= await User.findByIdAndUpdate(req.user.id, nuevaData, {
+        new: true,
+        runValidators:true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success: true,
+        user
+    })
+})
