@@ -164,3 +164,27 @@ exports.updateProfile=catchAsyncErrors(async(req, res, next)=>{
         user
     })
 })
+
+// Servicios controladores sobre usuarios por parte de los ADMIN
+
+// Ver todos los usuarios
+exports.getAllUsers = catchAsyncErrors(async(req, res, next)=>{
+    const users = await User.find();
+
+    res.status(200).json({
+        success:true,
+        users
+    })
+})
+// Ver detall del usuario
+exports.getUserDetails=catchAsyncErrors(async(req, res, next)=>{
+    const user = await User.findById(req.params.id);
+
+    if (!user){
+        return next(new ErrorHandler(`No se ha encontrado ningun usuario con el id: ${req.params.id}`))
+    }
+    res.status(200).json({
+        success: true,
+        user
+    })
+})
