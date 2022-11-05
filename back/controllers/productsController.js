@@ -131,6 +131,34 @@ exports.getProductReviews = catchAsyncErrors(async(req, res, next)=>{
         opiniones: product.opiniones
     })
 })
+//Eliminar review
+exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
+    const product = await producto.findById(req.query.idProducto);
+
+    const opiniones = product.opiniones.filter(opinion =>
+        opinion._id.toString() !== req.query.idReview.toString());
+
+    const numCalificaciones = opiniones.length;
+
+    const calificacion = product.opiniones.reduce((acc, Opinion) =>
+        Opinion.rating + acc, 0) / opiniones.length;
+
+    await producto.findByIdAndUpdate(req.query.idProducto, {
+        opiniones,
+        calificacion,
+        numCalificaciones
+    }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success: true,
+        message: "review eliminada correctamente"
+    })
+
+})
+
 
 
 //HABLEMOS DE FETCH
