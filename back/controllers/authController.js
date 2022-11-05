@@ -188,3 +188,20 @@ exports.getUserDetails=catchAsyncErrors(async(req, res, next)=>{
         user
     })
 })
+// Actualizar usuario desde admin
+exports.updateUser = catchAsyncErrors(async(req, res, next)=>{
+    const nuevaData ={
+        nombre: req.body.nombre,
+        email: req.body.email,
+        role: req.body.role
+    }
+    const user=await User.findByIdAndUpdate(req.params.id, nuevaData, {
+        new:true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
