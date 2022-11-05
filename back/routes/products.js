@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router();
 
-const {getProducts, newProduct, getProductById, updateProduct, deleteProduct, createProductReview} = require("../controllers/productsController"); //Traemos la respuesta json desde el controlador
+const {getProducts, newProduct, getProductById, updateProduct, deleteProduct, createProductReview, getProductReviews} = require("../controllers/productsController"); //Traemos la respuesta json desde el controlador
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 // Probamos autenticación
@@ -12,6 +12,7 @@ router.route('/producto/:id').put(isAuthenticatedUser, authorizeRoles("admin"), 
 router.route('/producto/:id').delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct); //Creacion de la ruta de eliminacion por id
 
 router.route('/review').put(isAuthenticatedUser, createProductReview)
+router.route('/review').get(isAuthenticatedUser, getProductReviews)
  
 
 module.exports=router;

@@ -122,6 +122,15 @@ exports.createProductReview = catchAsyncErrors(async(req, res, next)=>{
     })
 
 })
+// Ver todas las review de un producto
+exports.getProductReviews = catchAsyncErrors(async(req, res, next)=>{
+    const product = await producto.findById(req.query.id)
+
+    res.status(200).json({
+        success:true,
+        opiniones: product.opiniones
+    })
+})
 
 
 //HABLEMOS DE FETCH
