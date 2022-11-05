@@ -2,6 +2,7 @@ const Order=require("../models/order")
 const Product=require("../models/productos")
 const catchAsyncErrors=require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/errorHandler");
+const { findById } = require("../models/order");
 
 // Crear una orden
 exports.newOrder= catchAsyncErrors(async(req, res, next)=>{
@@ -88,5 +89,25 @@ exports.updateOrder=catchAsyncErrors(async(req, res, next)=>{
 
     res.status(200).json({
         success: true,        
+    })
+})
+async function updateStock(id, quantity){
+    const product = await findById(id);
+    product.inventario -= quantity;
+    await product.save({validateBeforeSave: false})
+}
+
+// Eliminar una orden (admin)
+exports.deleteOrder = catchAsyncErrors(async (req, res, next)=>{
+    const order = await Order.findById(req.params.id);
+
+    if(!order){
+        return next (new ErrorHandler("Esa orden no esta registrada", 404))
+    }
+    await order.remove()
+
+    res.status(200).json({
+        success:true,
+        message:"Orden eliminada correctamente"
     })
 })
