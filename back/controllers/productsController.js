@@ -82,6 +82,46 @@ exports.newProduct=catchAsyncErrors(async(req,res,next)=>{
         product
     })
 })
+// Crear o actualizar una una review
+exports.createProductReview = catchAsyncErrors(async(req, res, next)=>{
+    const { rating, comentario, idProducto} = req.body;
+
+    const opinion = {
+        nombreCliente: req.user.nombre,
+        rating: Number(rating),
+        comentario
+    }
+    const product = await producto.findById(idProducto);
+
+    const isReviewed = product.opiniones.find(item =>
+        item.nombreCliente === req.user.nombre)
+
+    if (isReviewed){
+        product.opiniones.forEach(opinion=>{
+            if (opinion.nombreCliente === req.user.nombre){
+                opinion.comentario = comentario,
+                opinion.rating=rating
+            }
+        
+        })
+    
+    }else{
+        product.opiniones.push(opinion)
+        product.numCalificaciones = product.opiniones.length
+    }
+
+    product.calificacion = product.opiniones.reduce ((acc, opinion) =>
+    opinion.rating + acc, 0)/ product.opiniones.length
+
+    await product.save({validateBeforeSave: false});
+
+    res.status(200).json({
+        success: true,
+        message: "Hemos opinado correctamente"
+
+    })
+
+})
 
 
 //HABLEMOS DE FETCH
