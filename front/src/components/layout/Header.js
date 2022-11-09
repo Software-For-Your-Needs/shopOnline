@@ -9,7 +9,7 @@ const Header = () => {
             <nav className='navbar row'>
                 <div className='col-12 col-md-3'>
                     <div className='navbar-brand'>
-                        <Link to="/Home"><img src="./images/logotello.png" alt="ShopOnline Store Logo"></img></Link>
+                        <Link to="/Home"><img src="../images/logotello.png" alt="ShopOnline Store Logo"></img></Link>
                     </div>
                 </div>
 
