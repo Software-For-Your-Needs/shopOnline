@@ -11,6 +11,7 @@ import Ventas from './components/Ventas';
 import { ProductDetails } from './components/products/ProductDetails';
 import { Dashboard } from './components/admin/Dashboard';
 import { ProductsList } from './components/admin/ProductsList';
+import { Login } from './components/user/Login';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/listaProductos" element={<ProductsList />}/>
             <Route path="/search/:keyword" element={<Home />}/>
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
         <Footer />
