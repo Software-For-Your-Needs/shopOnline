@@ -27,6 +27,7 @@ function App() {
             <Route path="/producto/:id" element={<ProductDetails />}/>
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/listaProductos" element={<ProductsList />}/>
+            <Route path="/search/:keyword" element={<Home />}/>
           </Routes>
         </div>
         <Footer />
