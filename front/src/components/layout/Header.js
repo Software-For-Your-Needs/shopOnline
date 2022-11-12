@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import { Link } from 'react-router-dom'
 import "../../App.css"
+import Search from './Search'
 
 const Header = () => {
 
@@ -13,21 +14,10 @@ const Header = () => {
                     </div>
                 </div>
 
-                <div className='col-12 col-md-6 mt-2 mt-md-0'>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            id="search_field"
-                            class="form-control"
-                            placeholder='¿Qué producto buscas?'></input>
-                        <div class="input-group-append">
-                            <button id="search-btn" class="btn">
-                                <i class="fa fa-search fa-2x text-white" aria-hidden="true"></i>
-                            </button>
-
-                        </div>
-                    </div>
+                <div className='col-12 col-md-4 mt-2 mt-md-0'>
+                    <Search/>
                 </div>
+                <Link to="/login" className='btn ml-4' id="login_btn">Login</Link>
                 <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
                 <div className="ml-4 dropdown d-inline">
                     <Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button"
